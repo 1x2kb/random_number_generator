@@ -10,11 +10,28 @@ struct Args {
     min: u64,
     #[clap(short('x'), long, default_value_t = 100)]
     max: u64,
+    #[clap(default_value_t = 1)]
     numbers: usize,
+}
+
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
+enum NumberError {
+    MinGreaterThanMax,
+    NumbersNotValid,
 }
 
 fn main() {
     let args = Args::parse();
+}
+
+fn check_for_errors(num: usize, min: u64, max: u64) -> Result<(), NumberError> {
+    if min > max {
+        return Err(NumberError::MinGreaterThanMax);
+    }
+    if num == 0 {
+        return Err(NumberError::NumbersNotValid);
+    }
+    Ok(())
 }
 
 fn generate_numbers(num: usize, min: u64, max: u64) -> Vec<u64> {
@@ -49,6 +66,33 @@ mod generate_numbers_should {
             "Number generated was not between {} and {}",
             min,
             max
+        );
+    }
+}
+
+#[cfg(test)]
+mod check_for_errors_should {
+    use super::*;
+
+    #[test]
+    fn return_error_if_min_greater_than_max() {
+        let min = 10;
+        let max = 5;
+
+        assert_eq!(
+            check_for_errors(10, min, max),
+            Err(NumberError::MinGreaterThanMax)
+        );
+    }
+
+    #[test]
+    fn return_error_if_numbers_is_zero() {
+        let min = 0;
+        let max = 100;
+
+        assert_eq!(
+            check_for_errors(0, min, max),
+            Err(NumberError::NumbersNotValid)
         );
     }
 }
