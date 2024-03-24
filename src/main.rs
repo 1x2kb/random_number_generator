@@ -18,5 +18,5 @@ fn main() {
         },
     };
 
-    numbers.into_iter().for_each(|num| println!("{num}"));
+    print!("{}", itertools::join(numbers.into_iter(), ","));
 }
