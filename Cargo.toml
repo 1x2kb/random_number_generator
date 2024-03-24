@@ -2,6 +2,7 @@
 name = "random_number_selector"
 version = "0.2.0"
 edition = "2021"
+license = "MIT"
 
 [[bin]]
 name = "rns"
