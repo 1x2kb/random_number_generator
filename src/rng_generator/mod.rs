@@ -27,10 +27,7 @@ pub struct RngGenerator {
 impl GenerateNumbers for RngGenerator {
     fn generate_numbers(num: usize, min: u64, max: u64) -> Vec<u64> {
         let mut rng = rand::thread_rng();
-        (0..num)
-            .into_iter()
-            .map(|_| rng.gen_range(min..=max))
-            .collect()
+        (0..num).map(|_| rng.gen_range(min..=max)).collect()
     }
 }
 

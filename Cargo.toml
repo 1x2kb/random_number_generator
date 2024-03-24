@@ -1,6 +1,6 @@
 [package]
 name = "random_number_selector"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 
 [[bin]]
@@ -11,4 +11,5 @@ path = "src/main.rs"
 
 [dependencies]
 clap = { version = "4.5.3", features = ["derive"] }
+itertools = "0.12.1"
 rand = "0.8.5"
