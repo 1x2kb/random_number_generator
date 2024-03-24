@@ -20,3 +20,16 @@ fn main() {
 
     print!("{}", itertools::join(numbers.into_iter(), ","));
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_main() {
+        let rng_generator = RngGenerator::try_parse_from(["rns"]);
+
+        // Should fail
+        assert!(rng_generator.is_err());
+    }
+}
