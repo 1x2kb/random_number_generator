@@ -82,12 +82,7 @@ mod generate_numbers_should {
 
         let (min, max) = (10, 15);
         let generated = RngGenerator::generate_numbers(numbers, min, max);
-        assert!(
-            generated.into_iter().all(|num| num >= min && num <= max),
-            "Number generated was not between {} and {}",
-            min,
-            max
-        );
+        assert!(generated.into_iter().all(|num| num >= min && num <= max),);
     }
 }
 
@@ -132,12 +127,7 @@ mod execute_should {
         let generated = rng_generator.execute().unwrap();
 
         assert_eq!(generated.len(), numbers);
-        assert!(
-            generated.into_iter().all(|num| num >= min && num <= max),
-            "Number generated was not between {} and {}",
-            min,
-            max
-        );
+        assert!(generated.into_iter().all(|num| num >= min && num <= max));
     }
 
     #[test]
