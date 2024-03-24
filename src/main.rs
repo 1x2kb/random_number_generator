@@ -18,5 +18,7 @@ fn main() {
         },
     };
 
-    print!("{}", itertools::join(numbers.into_iter(), ","));
+    let s = itertools::join(numbers.iter(), ",");
+
+    print!("{}", s);
 }
